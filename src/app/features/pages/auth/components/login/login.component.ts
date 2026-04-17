@@ -48,7 +48,7 @@ export class LoginComponent {
         this.loading = false;
         // Navigate based on actual role returned by API
         res.user.role === 'admin'
-          ? this.router.navigate(['/admin'])
+          ? this.router.navigate(['/admin/users'])
           : this.router.navigate(['/customer/cars']);
       },
       error: (errorMessage: string) => {
