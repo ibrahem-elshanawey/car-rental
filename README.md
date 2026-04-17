@@ -1,59 +1,157 @@
-# CarRental
+# 🚗 Car Rental System (Angular Frontend)
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.9.
+## 📌 Overview
 
-## Development server
+This is a **Car Rental Frontend Application** built using Angular.
+It includes both **Customer Panel** and **Admin Dashboard** with modern UI/UX features.
 
-To start a local development server, run:
+---
+
+## ⚙️ Setup Instructions
 
 ```bash
+npm install
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Then open:
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+```
+http://localhost:4200
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+---
 
-```bash
-ng generate --help
+## 🏗️ Project Structure
+
+```
+src/
+│
+├── app/
+│   ├── core/                # Services (Auth, Theme, Language, Interceptors)
+│   ├── shared/              # Shared Components (Navbar, Footer, Table)
+│   ├── features/
+│   │   ├── admin/           # Admin Dashboard (Users, Cars, Orders)
+│   │   ├── customer/        # Customer Features
+│   │   │   ├── cars         # Browse Cars
+│   │   │   ├── orders       # Orders (Create, List, Details)
+│   │   │   ├── installments # Installments
+│   │   ├── auth/            # Login & Register
+│   ├── layouts/             # Layouts (Admin / Customer)
+│
+├── public/
+│   ├── i18n/                # Translation files (en.json / ar.json)
+│
+└── environments/            # API configuration
 ```
 
-## Building
+---
 
-To build the project run:
+## 🌐 Features
 
-```bash
-ng build
+### 👤 Customer
+
+* Browse Cars
+* View Car Details
+* Create Order (Full / Installments)
+* View Orders
+* View & Pay Installments
+* Dark / Light Mode
+* Multi-language (EN / AR)
+
+### 🛠️ Admin
+
+* Manage Users
+* Manage Cars (CRUD)
+* View Orders
+* Update Payment Status
+
+---
+
+## 🌍 Language Switching
+
+The app supports **English 🇺🇸 and Arabic 🇸🇦**
+
+### 🔁 Switch Language
+
+* Click the **Translate Button 🌐** in the navbar
+* It toggles between:
+
+  * EN → AR
+  * AR → EN
+
+### 📂 Translation Files
+
+```
+assets/i18n/en.json
+assets/i18n/ar.json
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+---
 
-## Running unit tests
+## 🌙 Dark Mode
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+### 🔁 Toggle Theme
 
-```bash
-ng test
-```
+* Click the **🌙 / ☀️ button** in navbar
 
-## Running end-to-end tests
+### 🎨 Behavior
 
-For end-to-end (e2e) testing, run:
+* Applies only to **Customer Layout**
+* Uses CSS Variables for smooth UI transition
 
-```bash
-ng e2e
-```
+---
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## 🔐 Authentication
 
-## Additional Resources
+* JWT-based authentication
+* Roles:
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+  * Admin
+  * Customer
+
+---
+
+## 📡 API Integration
+
+### Customer APIs
+
+* `GET /api/customer/cars`
+* `GET /api/customer/cars/{id}`
+* `POST /api/customer/orders`
+* `GET /api/customer/orders`
+* `GET /api/customer/installments`
+* `POST /api/customer/installments/{id}/pay`
+
+### Admin APIs
+
+* `GET /api/admin/orders`
+* `PUT /api/admin/orders/{id}`
+
+---
+
+## 🎨 UI & UX
+
+* Bootstrap 5
+* Bootstrap Icons
+* Responsive Design
+* Custom Dark Mode System
+* Reusable Table Component
+* Toastr Notifications
+
+---
+
+## 🚀 Notes
+
+* Payment system is **simulated (no real payment gateway)**
+* Backend handles all calculations:
+
+  * Days
+  * Total Price
+  * Installments
+
+---
+
+## 👨‍💻 Author
+
+Developed by **Ibrahim Elshenawy**

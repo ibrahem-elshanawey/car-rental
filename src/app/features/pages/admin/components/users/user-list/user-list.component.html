@@ -1,0 +1,21 @@
+  <app-user-filter (filterChange)="loadUsers($event)"></app-user-filter>
+
+
+<div class="card p-3">
+
+  <!-- Filters -->
+
+  <!-- Table -->
+  <app-table
+    [columns]="columns"
+    [data]="users"
+    [loading]="loading"
+    [currentPage]="currentPage"
+    [lastPage]="lastPage"
+    [total]="total"
+    [perPage]="perPage"
+    (pageChange)="onPageChange($event)"
+    (action)="handleAction($event)">
+  </app-table>
+
+</div>

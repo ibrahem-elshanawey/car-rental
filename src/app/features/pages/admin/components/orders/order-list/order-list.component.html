@@ -1,0 +1,18 @@
+  <app-order-filter (filterChange)="loadOrders($event)"></app-order-filter>
+
+<div class="card p-3">
+
+
+  <app-table
+    [columns]="columns"
+    [data]="orders"
+    [loading]="loading"
+    [currentPage]="currentPage"
+    [lastPage]="lastPage"
+    [total]="total"
+    [perPage]="perPage"
+    (pageChange)="onPageChange($event)"
+    (action)="handleAction($event)">
+  </app-table>
+
+</div>

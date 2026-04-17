@@ -1,0 +1,62 @@
+{
+  "NAV": {
+    "CARS": "السيارات",
+    "ORDERS": "طلباتي",
+    "INSTALLMENTS": "الأقساط",
+    "LOGOUT": "تسجيل الخروج",
+    "Wallet": "المحفظة"
+  },
+  "COMMON": {
+    "SEARCH": "بحث",
+    "NO_DATA": "لا توجد بيانات",
+    "LOADING": "جاري التحميل..."
+  },
+  "ORDER": {
+    "CREATE": "إنشاء طلب",
+    "DELIVERY_DATE": "تاريخ التسليم",
+    "RECEIVING_DATE": "تاريخ الاستلام",
+    "PAYMENT_TYPE": "طريقة الدفع",
+    "ORDER_TYPE": "نوع الطلب",
+    "CONFIRM": "تأكيد الطلب",
+    "DayS": "أيام",
+    "Downpayment": "دفعة مقدمة",
+    "Number of Installments": "عدد الأقساط",
+      "TOTAL_PRICE": "السعر الإجمالي",
+      "CAR_ID": "رقم السيارة",
+      "PAYMENT_STATUS": "حالة الدفع",
+      "back": "العودة إلى الطلبات",
+      "Order Details": "تفاصيل الطلب",
+      "Order": "الطلب",
+      "Total_price": "السعر الإجمالي",
+      "Duration": "المدة",
+      "Trip dates": "تواريخ الرحلة",
+      "Points earned": "نقاط المكتسبة",
+      "Created": "تاريخ الإنشاء"
+
+
+
+  },
+  "CARS": {
+    "MODEL": "الموديل",
+    "PRICE_PER_DAY": "السعر لكل يوم",
+    "VIEW_DETAILS": "عرض التفاصيل",
+    "KILOMETERS": "الكيلومترات",
+    "BOOK_NOW": "احجز الآن",
+      "Car details": "تفاصيل السيارة",
+      "Name": "الاسم",
+      "Brand": "الماركة",
+      "Price_day": "السعر / يوم"
+  },
+  "INSTALLMENTS":{
+    "AMOUNT": "المبلغ",
+    "DUE_DATE": "تاريخ الاستحقاق",
+    "STATUS": "الحالة",
+    "PAY": "ادفع",
+    "total": "الإجمالي"
+  },
+  "global":{
+    "Actions": "إجراءات",
+    "View": "عرض"
+  }
+
+}

@@ -1,0 +1,48 @@
+
+  <!-- Loading -->
+  <div *ngIf="loading" class="text-center">
+    <div class="spinner-border"></div>
+  </div>
+
+  <!-- Content -->
+  <div *ngIf="car && !loading" class="row">
+
+    <!-- Image -->
+    <div class="col-md-6 mb-3">
+      <img src="image/Toyota-Camry.jpg"
+           class="img-fluid rounded shadow">
+    </div>
+
+    <!-- Details -->
+    <div class="col-md-6">
+
+      <h2 class="fw-bold">{{ car.name }}</h2>
+
+      <p class="text-muted">
+        {{ car.brand }} - {{ car.model }}
+      </p>
+
+      <hr>
+
+      <div class="mb-3">
+        <strong>{{ 'CARS.KILOMETERS' | translate }}:</strong> {{ car.kilometers }}
+      </div>
+
+      <div class="mb-3">
+        <strong>{{ 'CARS.PRICE_PER_DAY' | translate }}:</strong>
+        <span class="text-primary fw-bold">
+          {{ car.price_per_day | currency:'EGP' }} 
+        </span>
+      </div>
+
+      <hr>
+
+      <!-- Book Button -->
+      <button class="btn btn-primary w-100 py-2"
+              (click)="bookNow()">
+        🚗 {{ 'CARS.BOOK_NOW' | translate }}
+      </button>
+
+    </div>
+
+  </div>

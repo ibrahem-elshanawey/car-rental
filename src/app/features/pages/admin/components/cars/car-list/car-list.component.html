@@ -1,0 +1,17 @@
+<app-filter (filterChange)="loadCars($event)"></app-filter>
+
+<button class="btn btn-success mb-3" [routerLink]="['/admin/cars/add']">
+  Add Car
+</button>
+
+<app-table
+  [columns]="columns"
+  [data]="cars"
+  [loading]="loading"
+  [currentPage]="currentPage"
+  [lastPage]="lastPage"
+  [total]="total"
+  [perPage]="perPage"
+  (action)="handleAction($event)"
+  (pageChange)="onPageChange($event)">
+</app-table>

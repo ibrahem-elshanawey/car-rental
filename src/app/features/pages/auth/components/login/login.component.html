@@ -1,0 +1,66 @@
+<div class="container vh-100 d-flex justify-content-center align-items-center">
+  <div class="col-11 col-sm-8 col-md-5 col-lg-4">
+
+    <!-- Logo / Title -->
+    
+
+    <div class="card shadow-sm border-0 rounded-4 p-4">
+      <h5 class="text-center mb-3">Log In</h5>
+
+      <!-- Role Tabs -->
+      <ul class="nav nav-pills nav-fill mb-4 bg-light rounded-3 p-1">
+        <li class="nav-item">
+          <button class="nav-link w-100 rounded-3"
+                  [class.active]="role === 'customer'"
+                  (click)="setRole('customer')">
+            <i class="bi bi-person me-1"></i> Customer
+          </button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link w-100 rounded-3"
+                  [class.active]="role === 'admin'"
+                  (click)="setRole('admin')">
+            <i class="bi bi-shield-lock me-1"></i> Admin
+          </button>
+        </li>
+      </ul>
+
+      <form [formGroup]="form" (ngSubmit)="submit()">
+
+        <div class="mb-3">
+          <label class="form-label small text-muted">Email</label>
+          <input type="email" class="form-control"
+                 [class.is-invalid]="form.get('email')?.touched && form.get('email')?.invalid"
+                 placeholder="you@example.com"
+                 formControlName="email">
+          <div class="invalid-feedback">Enter a valid email.</div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label small text-muted">Password</label>
+          <input type="password" class="form-control"
+                 [class.is-invalid]="form.get('password')?.touched && form.get('password')?.invalid"
+                 placeholder="••••••••"
+                 formControlName="password">
+          <div class="invalid-feedback">Password is required.</div>
+        </div>
+
+        <div class="alert alert-danger py-2 small text-center mb-3" *ngIf="error">
+          {{ error }}
+        </div>
+
+        <button class="btn btn-primary w-100 rounded-3" type="submit"
+                [disabled]="loading || form.invalid">
+          <span class="spinner-border spinner-border-sm me-2" *ngIf="loading"></span>
+          {{ loading ? 'Logging in...' : 'Log In' }}
+        </button>
+      </form>
+
+      <!-- Only show Register link for customer tab -->
+      <div class="text-center mt-3 small" *ngIf="role === 'customer'">
+        No account yet?
+        <a routerLink="/register" class="text-primary fw-semibold">Register</a>
+      </div>
+    </div>
+  </div>
+</div>

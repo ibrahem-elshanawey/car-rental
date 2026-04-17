@@ -1,0 +1,59 @@
+{
+  "NAV": {
+    "CARS": "Cars",
+    "ORDERS": "My Orders",
+    "INSTALLMENTS": "Installments",
+    "LOGOUT": "Logout",
+    "Wallet": "Wallet"
+  },
+  "COMMON": {
+    "SEARCH": "Search",
+    "NO_DATA": "No data available",
+    "LOADING": "Loading..."
+  },
+  "ORDER": {
+    "CREATE": "Create Order",
+    "DELIVERY_DATE": "Delivery Date",
+    "RECEIVING_DATE": "Receiving Date",
+    "PAYMENT_TYPE": "Payment Type",
+    "ORDER_TYPE": "Order Type",
+    "CONFIRM": "Confirm Order",
+    "DayS": "Days",
+    "Downpayment": "Down payment",
+    "Number of Installments": "Number of Installments",
+     "TOTAL_PRICE": "Total Price",
+     "CAR_ID": "Car ID",
+     "PAYMENT_STATUS": "Payment Status",
+     "back": "Back to orders",
+     "Order Details": "Order Details",
+     "Order": "Order",
+     "Total_price": "Total price",
+     "Duration": "Duration",
+     "Trip dates": "Trip dates",
+     "Points earned": "Points earned",
+     "Created": "Created"
+  },
+  "CARS": {
+    "MODEL": "Model",
+    "PRICE_PER_DAY": "Price per day",
+    "VIEW_DETAILS": "View Details",
+    "KILOMETERS": "Kilometers",
+    "BOOK_NOW": "Book Now",
+     "Car details": "Car details",
+     "Name": "Name",
+     "Brand": "Brand",
+     "Price_day": "Price / day"
+  },
+  "INSTALLMENTS":{
+    
+    "AMOUNT": "Amount",
+    "DUE_DATE": "Due Date",
+    "STATUS": "Status",
+    "PAY": "Pay",
+    "total": "Total"
+  },
+  "global":{
+    "Actions": "Actions",
+    "View": "View"
+  }
+}

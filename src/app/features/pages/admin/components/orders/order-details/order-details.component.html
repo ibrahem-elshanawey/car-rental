@@ -1,0 +1,20 @@
+<div class="container mt-4">
+
+  <div *ngIf="loading" class="text-center">
+    <div class="spinner"></div>
+  </div>
+
+  <div *ngIf="order && !loading" class="card p-4">
+
+    <h4>Order #{{ order.id }}</h4>
+
+    <p><strong>User ID:</strong> {{ order.user_id }}</p>
+    <p><strong>Car ID:</strong> {{ order.car_id }}</p>
+    <p><strong>Payment Type:</strong> {{ order.payment_type }}</p>
+    <p><strong>Status:</strong> {{ order.payment_status }}</p>
+    <p><strong>Order Type:</strong> {{ order.order_type }}</p>
+    <p><strong>Date:</strong> {{ order.created_at | date }}</p>
+
+  </div>
+
+</div>

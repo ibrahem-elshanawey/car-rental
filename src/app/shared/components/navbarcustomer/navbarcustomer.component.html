@@ -1,0 +1,107 @@
+<nav class="navbar navbar-expand-lg bg-white px-3">
+<div class="container-fluid">
+  <a class="navbar-brand fw-bold" [routerLink]="['/customer/cars']" >
+    <i class="bi bi-car-front-fill me-2"></i>CarRental
+  </a>
+
+  <button class="navbar-toggler" type="button"
+          data-bs-toggle="collapse" data-bs-target="#customerNav">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="customerNav">
+
+    <ul class="navbar-nav mx-auto">
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/customer/cars']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <i class="bi bi-car-front me-1"></i>{{ 'NAV.CARS' | translate }}
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/customer/orders']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <i class="bi bi-receipt me-1"></i>{{ 'NAV.ORDERS' | translate }}
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/customer/installments']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <i class="bi bi-credit-card me-1"></i>{{ 'NAV.INSTALLMENTS' | translate }}
+        </a>
+      </li>
+    </ul>
+    <button class="btn btn-outline-secondary me-2 d-flex align-items-center gap-2"
+        (click)="toggleLang()">
+
+  <i class="bi bi-translate"></i>
+
+  <span>
+    {{ currentLang === 'en' ? 'AR' : 'EN' }}
+  </span>
+
+</button>
+<button class="btn btn-outline-secondary me-2"
+        (click)="toggleTheme()">
+
+  <i class="bi"
+     [ngClass]="{
+       'bi-moon': currentTheme === 'light',
+       'bi-sun': currentTheme === 'dark'
+     }">
+  </i>
+
+</button>
+    <!-- User Dropdown — only show when user is loaded -->
+    <div class="dropdown" *ngIf="user; else loadingUser">
+
+      <button class="btn btn-dark dropdown-toggle d-flex align-items-center gap-2"
+              data-bs-toggle="dropdown">
+
+        <!-- Avatar initials circle (no image needed) -->
+        <div class="rounded-circle bg-primary d-flex align-items-center justify-content-center"
+             style="width:32px; height:32px; font-size:13px; font-weight:600;">
+          {{ user.name.charAt(0).toUpperCase() }}
+        </div>
+
+        <span>{{ user.name }}</span>
+      </button>
+
+      <ul class="dropdown-menu dropdown-menu-end p-3" style="min-width: 220px;">
+
+        <!-- User info header -->
+        <div class="text-center mb-2">
+          <div class="rounded-circle bg-primary d-flex align-items-center justify-content-center mx-auto mb-2"
+               style="width:52px; height:52px; font-size:20px; font-weight:600; color:white;">
+            {{ user.name.charAt(0).toUpperCase() }}
+          </div>
+          <div class="fw-bold">{{ user.name }}</div>
+          <small class="text-muted">{{ user.email }}</small>
+        </div>
+
+        <!-- Wallet balance if available -->
+        <div *ngIf="user.wallet !== null"
+             class="text-center mb-2 py-1 bg-light rounded small">
+          <i class="bi bi-wallet2 me-1 text-success"></i>
+          {{ 'NAV.WALLET' | translate }}: <strong class="text-success">${{ user.wallet }}</strong>
+        </div>
+
+        <hr class="my-2">
+
+        <li>
+          <button class="dropdown-item text-danger rounded" (click)="logout()">
+            <i class="bi bi-box-arrow-right me-2"></i>{{ 'NAV.LOGOUT' | translate }}
+          </button>
+        </li>
+
+      </ul>
+    </div>
+
+    <!-- Skeleton while user loads -->
+    <ng-template #loadingUser>
+      <div class="d-flex align-items-center gap-2 opacity-50">
+        <div class="rounded-circle bg-secondary" style="width:32px; height:32px;"></div>
+        <span class="text-muted small">Loading...</span>
+      </div>
+    </ng-template>
+
+  </div>
+  </div>
+</nav>

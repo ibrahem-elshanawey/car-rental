@@ -1,1 +1,251 @@
-/* You can add global styles to this file, and also import other style files */
+/* ================================
+   🎨 ROOT VARIABLES (LIGHT MODE)
+================================ */
+:root {
+  --primary: #27368b;
+  --secondary: #966d29;
+
+  --bg: #f8f9fa;
+  --card-bg: #ffffff;
+  --text: #212529;
+  --border: #e0e0e0;
+
+  --input-bg: #ffffff;
+  --input-border: #ced4da;
+
+  --hover: rgba(0, 0, 0, 0.05);
+
+  --nav-link: #212529;
+}
+
+
+/* ================================
+   🌙 DARK MODE (Scoped)
+================================ */
+.dark-theme {
+  --bg: #121212;
+  --card-bg: #1e1e1e;
+  --text: #f1f1f1;
+  --border: #333;
+
+  --input-bg: #2a2a2a;
+  --input-border: #444;
+
+  --hover: rgba(255, 255, 255, 0.05);
+ --muted: #b0b0b0;
+  --nav-link: #f1f1f1;
+  background: var(--bg);
+  color: var(--text);
+}
+
+
+/* ================================
+   🌍 GLOBAL
+================================ */
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+
+/* ================================
+   🧱 BOOTSTRAP OVERRIDE
+================================ */
+
+/* Backgrounds */
+.dark-theme .bg-white,
+.dark-theme .bg-light,
+.dark-theme .bg-dark {
+  background-color: var(--card-bg) !important;
+  color: var(--text) !important;
+}
+.dark-theme .text-muted {
+  color: var(--muted) !important;
+}
+/* Cards */
+.dark-theme .card,
+.dark-theme .auth-card {
+  background: var(--card-bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+/* Navbar */
+.dark-theme .navbar {
+  background: var(--card-bg) !important;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Navbar Links */
+.navbar .nav-link {
+  color: var(--nav-link) !important;
+  font-weight: 500;
+}
+
+.navbar .nav-link.active {
+  color: var(--primary) !important;
+}
+
+.navbar .navbar-brand {
+  color: var(--nav-link) !important;
+}
+
+/* Tables */
+.dark-theme .table {
+  color: var(--text);
+}
+
+
+.dark-theme .table thead.table-light {
+  --bs-table-color: var(--text);
+  border-bottom: 2px solid var(--border);
+  --bs-table-bg: var(--card-bg);
+}
+
+.dark-theme .table tbody tr {
+  border-color: var(--border);
+}
+.dark-theme .table-hover tbody tr td {
+  background: var(--card-bg);
+  color: var(--text);
+}
+
+.dark-theme .table-hover tbody tr:hover {
+  background: var(--hover);
+}
+
+
+/* ================================
+   🧾 FORMS
+================================ */
+.dark-theme .form-control,
+.dark-theme .form-select {
+  background-color: var(--input-bg);
+  color: var(--text);
+  border: 1px solid var(--input-border);
+}
+
+.dark-theme .form-control::placeholder {
+  color: #aaa;
+}
+
+
+/* ================================
+   🔘 BUTTONS
+================================ */
+
+/* Primary */
+.btn-primary {
+  background: var(--primary);
+  border: none;
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+}
+
+/* Outline */
+.btn-outline-primary {
+  color: var(--primary);
+  border-color: var(--primary) !important;
+}
+
+.btn-outline-primary:hover {
+  background: var(--primary);
+  color: #fff;
+}
+.text-primary { 
+  color: var(--primary) !important;
+ }
+/* Dark button FIX 🔥 */
+.dark-theme .btn-dark {
+  background: #fff;
+  color: #000;
+  border: 1px solid var(--border);
+}
+
+.dark-theme .btn-dark:hover {
+  background: #fff;
+}
+
+/* Secondary */
+.dark-theme .btn-outline-secondary {
+  border-color: var(--border);
+  color: var(--text);
+}
+
+
+/* ================================
+   📦 DROPDOWN (🔥 مهم)
+================================ */
+.dark-theme .dropdown-menu {
+  background: var(--card-bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.dark-theme .dropdown-item {
+  color: var(--text);
+}
+
+.dark-theme .dropdown-item:hover {
+  background: var(--hover);
+}
+
+
+/* ================================
+   🧾 SPECIAL (wallet bg-light fix)
+================================ */
+.dark-theme .bg-light {
+  background: var(--card-bg) !important;
+}
+
+
+/* ================================
+   🔄 LOADING
+================================ */
+.spinner {
+  width: 30px;
+  height: 30px;
+  border: 3px solid var(--border);
+  border-top: 3px solid var(--primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: auto;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* ================================
+   ⚠️ ERRORS
+================================ */
+.error {
+  color: #dc3545;
+  font-size: 13px;
+}
+
+
+/* ================================
+   ✨ SMOOTH UX
+================================ */
+* {
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+html[dir='rtl'] .me-2 {
+  margin-left: 0.5rem !important;
+  margin-right: 0 !important;
+}
+html[dir='rtl'] .me-1 {
+  margin-left: 0.25rem !important;
+  margin-right: 0 !important;
+}
+html[dir="rtl"] .dropdown-menu-end[data-bs-popper] {
+    right: auto;
+    left: 0;
+}

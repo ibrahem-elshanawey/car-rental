@@ -1,0 +1,58 @@
+// Reusable detail row — label left, value right
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  font-size: 0.9rem;
+}
+
+// Icon box next to card headers
+.icon-box {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// Installments grid header
+.inst-header {
+  display: grid;
+  grid-template-columns: 36px 1fr 1fr 100px;
+  gap: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--bs-secondary-color);
+}
+
+// Installment data row
+.inst-row {
+  display: grid;
+  grid-template-columns: 36px 1fr 1fr 100px;
+  gap: 12px;
+  align-items: center;
+  font-size: 0.9rem;
+  transition: background 0.15s;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.02);
+  }
+}
+
+// Numbered circle for each installment
+.inst-index {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--bs-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--bs-secondary-color);
+}

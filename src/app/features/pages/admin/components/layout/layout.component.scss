@@ -1,0 +1,9 @@
+.content {
+    padding-inline-start: 220px;
+}
+
+@media (max-width: 991px) {
+    .content {
+        padding-inline-start: 0;
+    }
+}

@@ -1,0 +1,180 @@
+
+  <!-- Loading -->
+  <div *ngIf="loading" class="text-center py-5">
+    <div class="spinner-border text-primary" role="status"></div>
+    <p class="text-muted mt-2 small">Loading order...</p>
+  </div>
+
+  <!-- Error -->
+  <div *ngIf="error && !loading" class="alert alert-danger rounded-3">
+    <i class="bi bi-exclamation-triangle me-2"></i>{{ error }}
+  </div>
+
+  <!-- Content -->
+  <ng-container *ngIf="order && !loading">
+
+    <!-- Back button -->
+    <a routerLink="/customer/orders"
+       class="text-muted text-decoration-none small d-inline-flex align-items-center gap-1 mb-4">
+      <i class="bi bi-arrow-left"></i> {{'ORDER.back' | translate}}
+    </a>
+
+    <!-- ── Page Header ───────────────────────────────── -->
+    <div class="d-flex justify-content-between align-items-start mb-4">
+      <div>
+        <h4 class="mb-1 fw-semibold">{{'ORDER.Order' | translate}} #{{ order.id }}</h4>
+        <span class="text-muted small">
+          <i class="bi bi-clock me-1"></i>
+          {{'ORDER.Created' | translate}} {{ order.created_at | date: 'MMM d, yyyy' }}
+        </span>
+      </div>
+      <span class="badge rounded-pill px-3 py-2 fs-6"
+            [ngClass]="order.payment_status === 'paid'
+              ? 'text-bg-success'
+              : getStatusClass(order.payment_status)">
+        <i class="bi me-1"
+           [class.bi-check-circle-fill]="order.payment_status === 'paid'"
+           [class.bi-hourglass-split]="order.payment_status !== 'paid'"></i>
+        {{ order.payment_status | titlecase }}
+      </span>
+    </div>
+
+    <!-- ── Stat Strip ────────────────────────────────── -->
+    <div class="row g-3 mb-4">
+      <div class="col-6 col-md-3">
+        <div class="bg-white rounded-3 p-3">
+          <div class="text-muted small mb-1">Total price</div>
+          <div class="fw-semibold fs-5">{{ order.total_price | currency:'EGP' }}</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="bg-white rounded-3 p-3">
+          <div class="text-muted small mb-1">{{'ORDER.Duration' | translate}}</div>
+          <div class="fw-semibold fs-5">{{ order.days }} days</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="bg-white rounded-3 p-3">
+          <div class="text-muted small mb-1">{{'ORDER.PAYMENT_TYPE' | translate}}</div>
+          <div class="fw-semibold fs-5 text-capitalize">{{ order.payment_type }}</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="bg-white rounded-3 p-3">
+          <div class="text-muted small mb-1">{{'ORDER.ORDER_TYPE' | translate}}</div>
+          <div class="fw-semibold fs-5 text-capitalize">{{ order.order_type }}</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Trip Dates Card ───────────────────────────── -->
+    <div class="card border-0 shadow-sm rounded-4 mb-4">
+      <div class="card-header bg-transparent border-bottom d-flex align-items-center gap-2 py-3 px-4">
+        <div class="icon-box bg-primary bg-opacity-10 rounded-2 p-1">
+          <i class="bi bi-calendar-range text-primary"></i>
+        </div>
+        <span class="fw-semibold">{{'ORDER.Trip dates' | translate}}</span>
+        <span class="badge bg-secondary bg-opacity-10 text-secondary ms-auto rounded-pill small">
+          {{ order.order_type | titlecase }}
+        </span>
+      </div>
+      <div class="card-body px-4 py-0">
+        <div class="detail-row">
+          <span class="text-muted">{{'ORDER.DELIVERY_DATE' | translate}}</span>
+          <span class="fw-semibold">{{ order.delivery_date | date: 'MMM d, yyyy' }}</span>
+        </div>
+        <div class="detail-row">
+          <span class="text-muted">{{'ORDER.RECEIVING_DATE' | translate}}</span>
+          <span class="fw-semibold">{{ order.receiving_date | date: 'MMM d, yyyy' }}</span>
+        </div>
+        <div class="detail-row border-0 pb-3">
+          <span class="text-muted">{{'ORDER.Points earned' | translate}}</span>
+          <span class="fw-semibold text-warning">
+            <i class="bi bi-star-fill me-1"></i>{{ order.points }} pts
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Car Details Card ──────────────────────────── -->
+    <div class="card border-0 shadow-sm rounded-4 mb-4" *ngIf="order.car">
+      <div class="card-header bg-transparent border-bottom d-flex align-items-center gap-2 py-3 px-4">
+        <div class="icon-box bg-primary bg-opacity-10 rounded-2 p-1">
+          <i class="bi bi-car-front text-primary"></i>
+        </div>
+        <span class="fw-semibold">{{'CARS.Car details' | translate}}</span>
+      </div>
+      <div class="card-body px-4 py-0">
+        <div class="detail-row">
+          <span class="text-muted">{{'CARS.Name' | translate}}</span>
+          <span class="fw-semibold">{{ order.car.name }}</span>
+        </div>
+        <div class="detail-row">
+          <span class="text-muted">{{'CARS.Brand' | translate}}</span>
+          <span class="fw-semibold">{{ order.car.brand }}</span>
+        </div>
+        <div class="detail-row">
+          <span class="text-muted">{{'CARS.MODEL' | translate}}</span>
+          <span class="fw-semibold">{{ order.car.model }}</span>
+        </div>
+        <div class="detail-row border-0 pb-3">
+          <span class="text-muted">{{'CARS.PRICE_PER_DAY' | translate}}</span>
+          <span class="fw-semibold text-primary">{{ order.car.price_per_day | currency:'EGP' }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Installments Card ─────────────────────────── -->
+    <div class="card border-0 shadow-sm rounded-4" *ngIf="order.installments?.length">
+      <div class="card-header bg-transparent border-bottom d-flex align-items-center gap-2 py-3 px-4">
+        <div class="icon-box bg-primary bg-opacity-10 rounded-2 p-1">
+          <i class="bi bi-credit-card text-primary"></i>
+        </div>
+        <span class="fw-semibold">{{'NAV.INSTALLMENTS' | translate}}</span>
+        <span class="badge bg-secondary bg-opacity-10 text-secondary ms-auto rounded-pill small">
+          {{ order.installments.length }} {{'INSTALLMENTS.total' | translate}}
+        </span>
+      </div>
+      <div class="card-body p-0">
+
+        <!-- Column headers -->
+        <div class="inst-header px-4 py-2 border-bottom">
+          <span></span>
+          <span>{{'INSTALLMENTS.AMOUNT' | translate}}</span>
+          <span>{{'INSTALLMENTS.DUE_DATE' | translate}}</span>
+          <span>{{'INSTALLMENTS.STATUS' | translate}}</span>
+        </div>
+
+        <!-- Installment rows -->
+        <div class="inst-row px-4 py-3 border-bottom"
+             *ngFor="let inst of order.installments; let i = index; let last = last"
+             [class.border-0]="last">
+
+          <!-- Index circle -->
+          <div class="inst-index">{{ i + 1 }}</div>
+
+          <!-- Amount -->
+          <div class="fw-semibold">{{ inst.amount | currency:'EGP' }}</div>
+
+          <!-- Due date -->
+          <div class="text-muted small">{{ inst.due_date | date: 'MMM d, yyyy' }}</div>
+
+          <!-- Status badge -->
+          <div>
+            <span class="badge rounded-pill px-3"
+                  [ngClass]="inst.status === 'paid'
+                    ? 'text-bg-success'
+                    : 'text-bg-warning'">
+              <i class="bi me-1"
+                 [class.bi-check-circle-fill]="inst.status === 'paid'"
+                 [class.bi-hourglass-split]="inst.status !== 'paid'"></i>
+              {{ inst.status | titlecase }}
+            </span>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+  </ng-container>

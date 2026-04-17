@@ -1,0 +1,56 @@
+<div class="container mt-4">
+
+  <!-- Loading -->
+  <div *ngIf="loading" class="text-center">
+    <div class="spinner"></div>
+  </div>
+
+  <!-- Error -->
+  <div *ngIf="error" class="alert alert-danger">
+    {{ error }}
+  </div>
+
+  <!-- Content -->
+  <div *ngIf="user && !loading" class="card shadow p-4">
+
+    <h4 class="mb-4">User Details</h4>
+
+    <div class="row">
+
+      <div class="col-md-6 mb-3">
+        <strong>Name:</strong>
+        <div>{{ user.name }}</div>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <strong>Email:</strong>
+        <div>{{ user.email }}</div>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <strong>Role: </strong>
+        <span class="badge bg-primary">
+          {{ user.role }}
+        </span>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <strong>Country:</strong>
+        <div>{{ user.country }}</div>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <strong>Phone:</strong>
+        <div>{{ user.phone }}</div>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <strong>Created At:</strong>
+        <div>{{ user.created_at | date:'medium' }}</div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

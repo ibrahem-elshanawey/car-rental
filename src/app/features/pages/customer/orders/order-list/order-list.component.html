@@ -1,0 +1,14 @@
+<app-table
+  [columns]="columns"
+  [data]="data"
+  [loading]="loading"
+
+  [currentPage]="currentPage"
+  [lastPage]="lastPage"
+  [total]="total"
+  [perPage]="perPage"
+
+  (action)="handleAction($event)"
+  (pageChange)="onPageChange($event)"
+>
+</app-table>
